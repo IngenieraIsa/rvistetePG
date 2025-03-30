@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'usuarios',  # Agrega tu aplicación aquí
+    'rest_framework',  # Si estás usando Django REST Framework
 ]
 
 MIDDLEWARE = [
@@ -54,8 +56,8 @@ ROOT_URLCONF = 'circular_fashion.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [BASE_DIR / "templates"],  # Ruta global para plantillas
+        'APP_DIRS': True,  # Habilita plantillas dentro de las aplicaciones
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -119,7 +121,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+# Si necesitas servir archivos estáticos en desarrollo
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
