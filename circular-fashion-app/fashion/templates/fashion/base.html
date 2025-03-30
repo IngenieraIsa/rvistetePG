@@ -15,6 +15,11 @@
             <div class="logo">
                 <img src="{% static 'fashion/images/logo.png' %}" alt="R³-Vístete Logo">
             </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
             <ul class="menu">
                 <li><a href="#"><i class="fas fa-shopping-bag"></i> Mis posts</a></li>
                 <li><a href="#"><i class="fas fa-shopping-cart"></i> Mis Compras</a></li>
@@ -41,5 +46,11 @@
     <footer>
         <p>© 2025 R³-Vístete. Todos los derechos reservados.</p>
     </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
