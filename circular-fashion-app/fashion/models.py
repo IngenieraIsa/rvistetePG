@@ -48,3 +48,25 @@ class Publicacion(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class Like(models.Model):
+    usuario = models.ForeignKey('Usuario', on_delete=models.CASCADE)
+    publicacion = models.ForeignKey('Publicacion', on_delete=models.CASCADE)
+    fecha = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('usuario', 'publicacion')  # Evita duplicados
+
+    def __str__(self):
+        return f"{self.usuario} dio like a {self.publicacion}"
+
+class Favorito(models.Model):
+    usuario = models.ForeignKey('Usuario', on_delete=models.CASCADE)
+    publicacion = models.ForeignKey('Publicacion', on_delete=models.CASCADE)
+    fecha = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('usuario', 'publicacion')  # Evita duplicados
+
+    def __str__(self):
+        return f"{self.usuario} marcó como favorito {self.publicacion}"
