@@ -3,6 +3,27 @@
 {% block title %}Inicio - R³-Vístete{% endblock %}
 
 {% block content %}
-<h1>¡Bienvenido a R³-Vístete!</h1>
-<p>Esta es la página de inicio.</p>
+<div class="publicaciones-container">
+    {% for publicacion in publicaciones %}
+    <div class="card">
+        <div class="card-header">
+            <img src="{{ publicacion.imagen_url }}" alt="{{ publicacion.titulo }}">
+        </div>
+        <div class="card-body">
+            <h3>{{ publicacion.titulo }}</h3>
+            <p>{{ publicacion.descripcion }}</p>
+            <p><strong>Público:</strong> {{ publicacion.publico }}</p>
+            <p><strong>Estilo:</strong> {{ publicacion.estilo|join:", " }}</p>
+            <p><strong>Colores:</strong> {{ publicacion.colores|join:", " }}</p>
+            <p><strong>Talla:</strong> {{ publicacion.talla }}</p>
+            <p><small>Publicado el {{ publicacion.fecha_publicacion|date:"d/m/Y H:i" }}</small></p>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary">Comprar</button>
+            <button class="btn btn-secondary">Alquilar</button>
+            <button class="btn btn-like"><i class="fas fa-heart"></i></button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

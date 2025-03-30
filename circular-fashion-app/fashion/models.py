@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+from django.contrib.postgres.fields import ArrayField  # Importa ArrayField
 
 class Usuario(models.Model):
     id = models.AutoField(primary_key=True)
@@ -26,3 +27,24 @@ class LoginForm(forms.Form):
         'class': 'form-control',
         'placeholder': 'Contraseña'
     }))
+
+class Publicacion(models.Model):
+    id = models.AutoField(primary_key=True)
+    usuario_id = models.IntegerField()
+    titulo = models.CharField(max_length=255)
+    descripcion = models.TextField()
+    estilo = ArrayField(models.CharField(max_length=50), blank=True, default=list)  # Cambia a ArrayField
+    colores = ArrayField(models.CharField(max_length=50), blank=True, default=list)  # Cambia a ArrayField
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    fecha_publicacion = models.DateTimeField()
+    tipo = models.CharField(max_length=10)  # Ejemplo: "alquiler" o "venta"
+    deposito = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    publico = models.CharField(max_length=10)  # Ejemplo: "mujer", "hombre"
+    talla = models.CharField(max_length=10)
+    imagen_url = models.TextField()
+
+    class Meta:
+        db_table = 'publicaciones'
+
+    def __str__(self):
+        return self.titulo

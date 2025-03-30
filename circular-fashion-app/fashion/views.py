@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Usuario
+from .models import Usuario, Publicacion
 from .forms import LoginForm
 
 def login_view(request):
@@ -24,4 +24,11 @@ def login_view(request):
     return render(request, 'fashion/login.html', {'form': form})
 
 def inicio(request):
-    return render(request, 'fashion/inicio.html')  # Asegúrate de tener una plantilla llamada inicio.html
+    publicaciones = Publicacion.objects.all()
+    for publicacion in publicaciones:
+        # Asegúrate de que estilo y colores sean listas de Python
+        if isinstance(publicacion.estilo, str):
+            publicacion.estilo = publicacion.estilo.strip('{}').split(',')
+        if isinstance(publicacion.colores, str):
+            publicacion.colores = publicacion.colores.strip('{}').split(',')
+    return render(request, 'fashion/inicio.html', {'publicaciones': publicaciones})
