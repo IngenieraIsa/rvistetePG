@@ -1,32 +1,45 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Circular Fashion{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'fashion/css/style.css' %}">
+    <title>{% block title %}R³-Vístete{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'fashion/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'fashion/css/inicio.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>Circular Fashion</h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="{% static 'fashion/images/logo.png' %}" alt="R³-Vístete Logo">
+            </div>
+            <ul class="menu">
+                <li><a href="#"><i class="fas fa-shopping-bag"></i> Mis posts</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i> Mis Compras</a></li>
+                <li><a href="#"><i class="fas fa-heart"></i> Favoritos</a></li>
+                <li><a href="#"><i class="fas fa-thumbs-up"></i> Likes</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Mensajes</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-user"></i> Mi Perfil</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Ver Perfil</a></li>
+                        <li><a href="#">Editar Perfil</a></li>
+                        <li><a href="#">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fas fa-bell"></i> <span class="notification">3</span></a></li>
             </ul>
         </nav>
     </header>
-    
     <main>
         {% block content %}
+        <!-- Aquí se insertará el contenido específico de cada página -->
         {% endblock %}
     </main>
-    
     <footer>
-        <p>&copy; 2023 Circular Fashion. All rights reserved.</p>
+        <p>© 2025 R³-Vístete. Todos los derechos reservados.</p>
     </footer>
-    
-    <script src="{% static 'fashion/js/script.js' %}"></script>
 </body>
 </html>
