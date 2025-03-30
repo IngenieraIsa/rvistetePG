@@ -7,7 +7,7 @@
 }
 
 .card {
-    width: 300px;
+    width: 350px; /* Aumenta el ancho de la card */
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -18,7 +18,7 @@
 
 .card-header img {
     width: 100%;
-    height: 200px;
+    height: 300px; /* Aumenta la altura de la imagen */
     object-fit: cover;
 }
 
@@ -70,5 +70,15 @@
 }
 
 .card-footer .btn-like:hover {
+    color: #4CAF50;
+}
+
+.card-footer .btn-favorite {
+    background-color: transparent;
+    color: #555;
+    font-size: 18px;
+}
+
+.card-footer .btn-favorite:hover {
     color: #e91e63;
 }
